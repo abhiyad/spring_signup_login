@@ -1,3 +1,3 @@
-guru/springframework/domain/User.class
-guru/springframework/SpringBootPostgreSQLApplication.class
-guru/springframework/controllers/ProductController.class
+com/springframework/controllers/ProductController.class
+com/springframework/domain/User.class
+com/springframework/SpringBootPostgreSQLApplication.class

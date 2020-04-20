@@ -1,4 +1,4 @@
-package guru.springframework.domain;
+package com.springframework.domain;
 
 public class User {
     private String fname;

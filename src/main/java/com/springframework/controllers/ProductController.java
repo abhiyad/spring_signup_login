@@ -1,9 +1,9 @@
-package guru.springframework.controllers;
+package com.springframework.controllers;
 
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import guru.springframework.domain.User;
+import com.springframework.domain.User;
 
 /**
  * Created by jt on 1/10/17.
