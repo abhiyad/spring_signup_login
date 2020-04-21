@@ -1,3 +1,4 @@
-/home/abhishek/projects/library/src/main/java/guru/springframework/domain/User.java
-/home/abhishek/projects/library/src/main/java/guru/springframework/SpringBootPostgreSQLApplication.java
-/home/abhishek/projects/library/src/main/java/guru/springframework/controllers/ProductController.java
+/home/abhishek/projects/library/src/main/java/com/springframework/controllers/ProductController.java
+/home/abhishek/projects/library/src/main/java/com/springframework/repositories/UserRepository.java
+/home/abhishek/projects/library/src/main/java/com/springframework/SpringBootPostgreSQLApplication.java
+/home/abhishek/projects/library/src/main/java/com/springframework/domain/Person.java

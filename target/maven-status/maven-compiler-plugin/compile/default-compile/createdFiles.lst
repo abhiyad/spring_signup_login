@@ -1,3 +1,4 @@
+com/springframework/domain/Person.class
 com/springframework/controllers/ProductController.class
-com/springframework/domain/User.class
 com/springframework/SpringBootPostgreSQLApplication.class
+com/springframework/repositories/UserRepository.class
