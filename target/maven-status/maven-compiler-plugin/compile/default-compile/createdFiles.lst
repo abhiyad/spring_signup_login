@@ -1,3 +1,5 @@
+com/springframework/services/UserServiceImpl.class
+com/springframework/services/UserService.class
 com/springframework/domain/Person.class
 com/springframework/controllers/ProductController.class
 com/springframework/SpringBootPostgreSQLApplication.class

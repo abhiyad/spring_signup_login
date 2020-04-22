@@ -5,9 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<p th:text="'First Name: ' + ${person.fname}"></p>
+<p th:text="${person.id}">Product Id</p>
 <br>
-<p th:text="'Last Name: ' + ${person.lname}"></p>
+<p th:text="${person.id}">Product Id</p>
 <a href="/addUser">New Product</a>
+<br>
+<a href="/showAll">TOTAL LIST</a>
 </body>
 </html>
