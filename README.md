@@ -6,14 +6,15 @@ A simple implementaion of Database storing and retrieval using Spring framework.
 ```
 sudo apt update && sudo apt install openjdk-8-jdk
 ``` 
+
 <h3>Install and Configure Postgres-SQL</h3>
 ```
 sudo apt update && sudo apt install postgresql postgresql-contrib
 ```
-```
-Now you need to make a user in PSQL and a database name
-Edit the file application.properties in src/main/resources for $USER, $PASSWORD and $DATABSE-NAME
-```
+
+<h5>Now you need to make a user in PSQL and a database name
+Edit the file application.properties in src/main/resources for $USER, $PASSWORD and $DATABSE-NAME</h5>
+
 <h3>Install Maven</h3>
 ```
 sudo apt update && sudo apt install maven 
