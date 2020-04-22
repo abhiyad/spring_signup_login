@@ -10,8 +10,10 @@ sudo apt update && sudo apt install openjdk-8-jdk
 ```
 sudo apt update && sudo apt install postgresql postgresql-contrib
 ```
+```
 Now you need to make a user in PSQL and a database name
 Edit the file application.properties in src/main/resources for $USER, $PASSWORD and $DATABSE-NAME
+```
 <h3>Install Maven</h3>
 ```
 sudo apt update && sudo apt install maven 
