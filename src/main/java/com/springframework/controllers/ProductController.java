@@ -32,13 +32,14 @@ public class ProductController {
     }
 
     @PostMapping("/addUser")
-    public String process_form(Person person){
+    public String process_form(Person person, Model model){
         String fname = person.getFname();
         String lname = person.getLname();
         Person u = new Person(fname,lname);
         repository.save(u);
         System.out.println("INSERTED IN DATABASE ++++++++++ " + fname + " " + lname);
-        return "showUser";
+        model.addAttribute("person",repository.findAll());
+        return "showAll";
     }
 
     @GetMapping("showAll")
@@ -56,5 +57,11 @@ public class ProductController {
     public String getProduct(@PathVariable String id, Model model){
         model.addAttribute("person", userService.getById(Long.valueOf(id)));
         return "showUser";
+    }
+    @RequestMapping("/product/delete/{id}")
+    public String deleteProduct(@PathVariable String id, Model model){
+        userService.delete(Long.valueOf(id));
+        model.addAttribute("person",repository.findAll());
+        return "showAll";
     }
 }
