@@ -5,9 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="#" th:action="@{/addUser}" th:object="${myUser}" method="post">
-    <label for="name">Name:</label><br>
-    <input type="text" id="fname" name="fname" value="John" th:field="*{name}"><br>
+<form action="#" th:action="@{/login}" th:object="${myUser}" method="post">
     <label for="username">Username:</label><br>
     <input type="text" id="lname" name="lname" value="Doe" th:field="*{username}"><br>
     <label for="password">Password:</label><br>

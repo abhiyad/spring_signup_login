@@ -1,16 +1,14 @@
 package com.springframework.controllers;
 
 
+import com.springframework.domain.MyUser;
+import com.springframework.repositories.MyUserRepository;
+import com.springframework.services.MyUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.springframework.domain.Person;
-import com.springframework.repositories.UserRepository;
-import com.springframework.services.UserService;
-import com.springframework.services.UserServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,50 +16,67 @@ import java.util.List;
  */
 @Controller
 public class ProductController {
-    private UserService userService;
+    private MyUserService myuserService;
     @Autowired
-    UserRepository repository;
+    MyUserRepository userRepository;
     @Autowired
-    public void setUserService(UserService userService){
-        this.userService = userService;
+    public void setUserService(MyUserService myuserService){
+        this.myuserService = myuserService;
     }
 
     @GetMapping("/addUser")
-    public String sendForm(Person person){
+    public String sendForm(MyUser person){
         return "addUser";
     }
 
+    @GetMapping("/login")
+    public String sendForm_login(MyUser person){
+        return "login";
+    }
+
     @PostMapping("/addUser")
-    public String process_form(Person person, Model model){
-        String fname = person.getFname();
-        String lname = person.getLname();
-        Person u = new Person(fname,lname);
-        repository.save(u);
-        System.out.println("INSERTED IN DATABASE ++++++++++ " + fname + " " + lname);
-        model.addAttribute("person",repository.findAll());
+    public String process_form(MyUser myUser, Model model){
+        String name = myUser.getName();
+        String username = myUser.getUsername();
+        String password = myUser.getPassword();
+
+        // Here check for username availability before making an object and saving in database
+        MyUser u = new MyUser(name,username,password);
+        userRepository.save(u);
+        System.out.println("INSERTED IN DATABASE ++++++++++ " + name + " " + username + " " + password);
+        model.addAttribute("myUser",userRepository.findAll());
+        List<MyUser> l = userRepository.findAll();
         return "showAll";
+    }
+
+    @PostMapping("/login")
+    public String process_form_login(MyUser myUser, Model model){
+        String username = myUser.getUsername();
+        String password = myUser.getPassword();
+        System.out.println("YOU ENTERED :" + username + " " + password);
+        return "index";
     }
 
     @GetMapping("showAll")
     public String showAll(Model model){
-        model.addAttribute("person",repository.findAll());
+        model.addAttribute("myUser",userRepository.findAll());
         return "showAll";
     }
 
     @RequestMapping("/")
-    public String index(Person person) {
+    public String index(MyUser person) {
         return "index";
     }
 
-    @RequestMapping("/product/show/{id}")
-    public String getProduct(@PathVariable String id, Model model){
-        model.addAttribute("person", userService.getById(Long.valueOf(id)));
-        return "showUser";
-    }
-    @RequestMapping("/product/delete/{id}")
-    public String deleteProduct(@PathVariable String id, Model model){
-        userService.delete(Long.valueOf(id));
-        model.addAttribute("person",repository.findAll());
-        return "showAll";
-    }
+//    @RequestMapping("/product/show/{id}")
+//    public String getProduct(@PathVariable String id, Model model){
+//        model.addAttribute("person", userService.getById(Long.valueOf(id)));
+//        return "showUser";
+//    }
+//    @RequestMapping("/product/delete/{id}")
+//    public String deleteProduct(@PathVariable String id, Model model){
+//        userService.delete(Long.valueOf(id));
+//        model.addAttribute("person",repository.findAll());
+//        return "showAll";
+//    }
 }

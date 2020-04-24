@@ -6,20 +6,18 @@
 </head>
 <body>
 <div class="container">
-    <div th:if="${not #lists.isEmpty(person)}">
+    <div th:if="${not #lists.isEmpty(myUser)}">
         <h2>Product List</h2>
         <table class="table table-striped">
             <tr>
-                <th>Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>username</th>
+                <th>Name</th>
+                <th>Password</th>
             </tr>
-            <tr th:each="product : ${person}">
-                <td th:text="${product.id}"></td>
-                <td th:text="${product.fname}"></td>
-                <td th:text="${product.lname}"></td>
-                <td><a th:href="${'/product/show/' + product.id}">View</a> </td>
-                <td><a th:href="${'/product/delete/' + product.id}">Delete</a> </td>
+            <tr th:each="product : ${myUser}">
+                <td th:text="${product.username}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.password}"></td>
             </tr>
         </table>
     </div>

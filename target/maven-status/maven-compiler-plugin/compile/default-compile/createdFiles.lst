@@ -1,6 +1,6 @@
-com/springframework/services/UserServiceImpl.class
-com/springframework/services/UserService.class
-com/springframework/domain/Person.class
+com/springframework/services/MyUserServiceImpl.class
+com/springframework/domain/MyUser.class
 com/springframework/controllers/ProductController.class
+com/springframework/repositories/MyUserRepository.class
 com/springframework/SpringBootPostgreSQLApplication.class
-com/springframework/repositories/UserRepository.class
+com/springframework/services/MyUserService.class
