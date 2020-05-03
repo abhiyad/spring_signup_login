@@ -1,6 +1,10 @@
+com/springframework/WebSecurityConfig.class
 com/springframework/services/MyUserServiceImpl.class
+com/springframework/MvcWebApplicationInitializer.class
+com/springframework/AppConfig.class
 com/springframework/domain/MyUser.class
 com/springframework/controllers/ProductController.class
 com/springframework/repositories/MyUserRepository.class
 com/springframework/SpringBootPostgreSQLApplication.class
 com/springframework/services/MyUserService.class
+com/springframework/SecurityWebApplicationInitializer.class
