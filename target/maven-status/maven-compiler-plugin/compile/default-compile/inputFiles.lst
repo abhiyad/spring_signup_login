@@ -1,6 +1,7 @@
 /home/abhishek/projects/library/src/main/java/com/springframework/services/MyUserService.java
 /home/abhishek/projects/library/src/main/java/com/springframework/SecurityWebApplicationInitializer.java
 /home/abhishek/projects/library/src/main/java/com/springframework/controllers/ProductController.java
+/home/abhishek/projects/library/src/main/java/com/springframework/services/UserService.java
 /home/abhishek/projects/library/src/main/java/com/springframework/repositories/MyUserRepository.java
 /home/abhishek/projects/library/src/main/java/com/springframework/SpringBootPostgreSQLApplication.java
 /home/abhishek/projects/library/src/main/java/com/springframework/domain/MyUser.java

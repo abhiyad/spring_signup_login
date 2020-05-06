@@ -5,12 +5,15 @@
     <title>Title</title>
 </head>
 <body>
+THIS IS A LOGIN FORM FOR LIBRARY
+<br>
 <form action="#" th:action="@{/login}" th:object="${myUser}" method="post">
     <label for="username">Username:</label><br>
-    <input type="text" id="lname" name="lname" value="Doe" th:field="*{username}"><br>
+    <input type="text" id="username" name="username" value="Doe" th:field="*{username}"><br>
     <label for="password">Password:</label><br>
-    <input type="text" id="lname" name="lname" value="Doe" th:field="*{password}"><br><br>
+    <input type="text" id="password" name="password" value="Doe" th:field="*{password}"><br><br>
     <input type="submit" value="Submit">
 </form>
+<p th:if="${loginError}" class="error">Wrong user or password</p>
 </body>
 </html>

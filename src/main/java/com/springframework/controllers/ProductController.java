@@ -33,7 +33,7 @@ public class ProductController {
     }
 
     @GetMapping("/login")
-    public String sendForm_login(MyUser person){
+    public String sendForm_login(MyUser myUser){
         return "login";
     }
 
@@ -50,11 +50,12 @@ public class ProductController {
     }
 
     @PostMapping("/login")
-    public String process_form_login(MyUser myUser, Model model){
+    public String process_form_login(MyUser myUser){
+        System.out.println("IN POST LOGIN");
         String username = myUser.getUsername();
         String password = myUser.getPassword();
         System.out.println("YOU ENTERED :" + username + " " + password);
-        return "index";
+        return "login";
     }
 
     @RequestMapping("/")

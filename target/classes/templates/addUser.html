@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<!--    <meta name="_csrf" content="${_csrf.token}"/>-->
+<!--    &lt;!&ndash; default header name is X-CSRF-TOKEN &ndash;&gt;-->
+<!--    <meta name="_csrf_header" content="${_csrf.headerName}"/>-->
 </head>
 <body>
 <form action="#" th:action="@{/addUser}" th:object="${myUser}" method="post">
@@ -12,7 +15,9 @@
     <input type="text" id="lname" name="lname" value="Doe" th:field="*{username}"><br>
     <label for="password">Password:</label><br>
     <input type="text" id="lname" name="lname" value="Doe" th:field="*{password}"><br><br>
+<!--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
     <input type="submit" value="Submit">
+
 </form>
 </body>
 </html>
