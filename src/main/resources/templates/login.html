@@ -14,6 +14,8 @@ THIS IS A LOGIN FORM FOR LIBRARY
     <input type="text" id="password" name="password" value="Doe" th:field="*{password}"><br><br>
     <input type="submit" value="Submit">
 </form>
-<p th:if="${loginError}" class="error">Wrong user or password</p>
+<div align="center" th:if="${param.error}">
+    <p style="font-size: 20; color: #FF1C19;">User Name or Password invalid, please verify</p>
+</div>
 </body>
 </html>

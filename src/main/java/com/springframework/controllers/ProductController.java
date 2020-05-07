@@ -57,7 +57,10 @@ public class ProductController {
         System.out.println("YOU ENTERED :" + username + " " + password);
         return "login";
     }
-
+    @RequestMapping("/homepage")
+    public String home(MyUser myUser){
+        return "homepage";
+    }
     @RequestMapping("/")
     public String index(MyUser person) {
         MyUser t = new MyUser("Abhishek Yadav","abhiyad","123","USER");
