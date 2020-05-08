@@ -30,12 +30,12 @@ public class ProductController {
         this.userService = userService;
     }
 
-    @GetMapping("/addUser")
+    @GetMapping("/signup")
     public String sendForm(MyUser person){
-        return "addUser";
+        return "signup";
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("/signup")
     public String process_form(MyUser myUser){
         String name = myUser.getName();
         String username = myUser.getUsername();

@@ -7,5 +7,7 @@
 <body>
 THIS IS YOUR HOMEpaGE USEr
 <p th:text="${session.username}" th:unless="${session == null}">[...]</p>
+<br>
+<a href="/logout">LOGOUT</a>
 </body>
 </html>
