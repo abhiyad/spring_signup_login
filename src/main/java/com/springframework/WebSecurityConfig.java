@@ -1,29 +1,28 @@
 package com.springframework;
 
+//import com.springframework.services.UserService;
+import com.springframework.services.MyUserDetailsService;
+import com.springframework.services.MyUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 //import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.*;
-//import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.ui.Model;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Configuration
 @EnableWebSecurity
 @ComponentScan("com.springframework")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -36,16 +35,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        return manager;
 //    }
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+    @Autowired
+    private MyUserDetailsService myUserDetailsService;
 
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user1").password(passwordEncoder().encode("user1Pass")).roles("USER")
-                .and()
-                .withUser("user2").password(passwordEncoder().encode("user2Pass")).roles("USER")
-                .and()
-                .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN");
+        auth.userDetailsService(myUserDetailsService)
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
@@ -64,8 +61,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication)
                             throws IOException, ServletException {
-//                        String username = ((UserDetails)authentication.getPrincipal()).getUsername();
-//                        System.out.println(" =================" + username);
                         redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/homepage");
                     }
                 })

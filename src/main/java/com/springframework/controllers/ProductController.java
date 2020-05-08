@@ -4,7 +4,7 @@ package com.springframework.controllers;
 import com.springframework.domain.MyUser;
 import com.springframework.repositories.MyUserRepository;
 import com.springframework.services.MyUserService;
-import com.springframework.services.UserService;
+import com.springframework.services.MyUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,21 +23,16 @@ import java.util.List;
 public class ProductController {
     @Autowired
     MyUserRepository userRepository;
-    private UserService userService;
+    private MyUserService userService;
 
     @Autowired
-    public void setMyUserService(UserService userService){
+    public void setMyUserService(MyUserService userService){
         this.userService = userService;
     }
 
     @GetMapping("/addUser")
     public String sendForm(MyUser person){
         return "addUser";
-    }
-
-    @GetMapping("/login")
-    public String sendForm_login(MyUser myUser){
-        return "login";
     }
 
     @PostMapping("/addUser")
@@ -47,9 +42,14 @@ public class ProductController {
         String password = myUser.getPassword();
 
         // Here check for username availability before making an object and saving in database
-        userService.saveMyUser(username,name,password,"USER");
+        userService.saveMyUser(name,username,password,"USER");
         System.out.println("INSERTED IN DATABASE ++++++++++ " + name + " " + username + " " + password);
         return "index";
+    }
+
+    @GetMapping("/login")
+    public String sendForm_login(MyUser myUser){
+        return "login";
     }
 
     @PostMapping("/login")
@@ -70,11 +70,6 @@ public class ProductController {
     }
     @RequestMapping("/")
     public String index(MyUser person) {
-        MyUser t = new MyUser("Abhishek Yadav","abhiyad","123","USER");
-        userRepository.save(t);
-        userService.saveMyUser(t.getName(),t.getUsername(),t.getPassword(),"USER");
-        UserDetails user = userService.loadUserByUsername("abhiyad");
-        System.out.println(user.getPassword());
         return "index";
     }
 

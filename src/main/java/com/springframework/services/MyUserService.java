@@ -13,30 +13,22 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MyUserService implements UserService {
+public class MyUserService {
     private MyUserRepository repository;
+    private BCryptPasswordEncoder passwordEncoder;
     @Autowired
     public MyUserService(MyUserRepository repository){
+        this.passwordEncoder = new BCryptPasswordEncoder();
         this.repository  = repository;
     }
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        MyUser user = repository.findMyUserByUsername(username);
-        UserBuilder builder = null;
-        if (user!=null){
-            builder = User.withUsername(username);
-            builder.password(new BCryptPasswordEncoder().encode(user.getPassword()));
-            builder.roles(user.getRole());
-        }
-        else{
-            throw new UsernameNotFoundException("USER NOT FOUND");
-        }
-        return builder.build();
+
+    public MyUser loadUserByUsername(String username){
+        return repository.findMyUserByUsername(username);
     }
-    @Override
-    public void saveMyUser(String username,String password,String name,String role){
-        MyUser user = new MyUser(name,username,password,role);
+    public void saveMyUser(String name,String username,String password,String role){
+        MyUser user = new MyUser(name,username,passwordEncoder.encode(password),role);
         //need to add some checks here!!
+        System.out.println("saved password ============== " + user.getPassword());
         repository.save(user);
     }
 }
