@@ -6,11 +6,14 @@ import com.springframework.repositories.MyUserRepository;
 import com.springframework.services.MyUserService;
 import com.springframework.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -58,7 +61,11 @@ public class ProductController {
         return "login";
     }
     @RequestMapping("/homepage")
-    public String home(MyUser myUser){
+    public String home(HttpSession session){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = ((UserDetails)authentication.getPrincipal()).getUsername();
+        System.out.println(" =================" + username);
+        session.setAttribute("username",username);
         return "homepage";
     }
     @RequestMapping("/")
