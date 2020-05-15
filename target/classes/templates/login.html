@@ -5,19 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-THIS IS A LOGIN FORM FOR LIBRARY
+<h1 style="text-align: center">THIS IS A CUSTOM LOGIN FORM</h1>
 <br>
-<form action="#" th:action="@{/login}" th:object="${myUser}" method="post">
+<form action="#" th:action="@{/login}" th:object="${myUser}" method="post" style="text-align: center;margin-top: 2%">
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username" value="Doe" th:field="*{username}"><br>
     <label for="password">Password:</label><br>
-    <input type="text" id="password" name="password" value="Doe" th:field="*{password}"><br><br>
-    <input type="submit" value="Submit">
+    <input type="password" id="password" name="password" value="Doe" th:field="*{password}"><br><br>
+    <input type="submit" value="Login">
 </form>
-<div align="center" th:if="${param.error}">
+<div align="center" th:if="${param.error}" style="text-align: center;">
     <p style="font-size: 20; color: #FF1C19;">User Name or Password invalid, please verify</p>
 </div>
 <br>
-<a href="/addUser">SIGN UP ?</a>
+<h3 style="text-align: center" ><a href="/signup">SIGN UP ?</a></h3>
 </body>
 </html>

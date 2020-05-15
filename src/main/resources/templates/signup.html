@@ -8,15 +8,16 @@
 <!--    <meta name="_csrf_header" content="${_csrf.headerName}"/>-->
 </head>
 <body>
-<form action="#" th:action="@{/addUser}" th:object="${myUser}" method="post">
+<h1 style="text-align: center">Sign Up Form</h1>
+<form action="#" th:action="@{/signup}" th:object="${myUser}" method="post" style="text-align: center;margin-top: 2%">
     <label for="name">Name:</label><br>
     <input type="text" id="fname" name="fname" value="John" th:field="*{name}"><br>
     <label for="username">Username:</label><br>
     <input type="text" id="lname" name="lname" value="Doe" th:field="*{username}"><br>
     <label for="password">Password:</label><br>
-    <input type="text" id="lname" name="lname" value="Doe" th:field="*{password}"><br><br>
+    <input type="password" id="lname" name="lname" value="Doe" th:field="*{password}"><br><br>
 <!--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
-    <input type="submit" value="Submit">
+    <input type="submit" value="Sign Up">
 
 </form>
 </body>

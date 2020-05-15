@@ -5,9 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-THIS IS YOUR HOMEpaGE USEr
-<p th:text="${session.username}" th:unless="${session == null}">[...]</p>
+<h1 style="text-align: center">Currently Logged In User: </h1>
+<h1 style="text-align: center" th:text="${session.username}" th:unless="${session == null}">[...]</h1>
 <br>
-<a href="/logout">LOGOUT</a>
+<h3 style="text-align: center"><a href="/logout">LOGOUT</a></h3>
 </body>
 </html>

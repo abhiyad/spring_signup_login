@@ -31,7 +31,7 @@ public class ProductController {
     }
 
     @GetMapping("/signup")
-    public String sendForm(MyUser person){
+    public String sendForm(MyUser myUser){
         return "signup";
     }
 
