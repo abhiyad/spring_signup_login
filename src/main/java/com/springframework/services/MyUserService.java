@@ -27,8 +27,7 @@ public class MyUserService {
     }
     public void saveMyUser(String name,String username,String password,String role){
         MyUser user = new MyUser(name,username,passwordEncoder.encode(password),role);
-        //need to add some checks here!!
-        System.out.println("saved password ============== " + user.getPassword());
+        //need to add some checks here to check if the user already exists!!
         repository.save(user);
     }
 }
